@@ -1,0 +1,9 @@
+  $form['product_browse_series'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Series',
+    '#id' => 'product_browse_series',
+    '#required' => FALSE,
+    '#attributes' =>array('class' => 'ac_product_browse'),
+    '#autocomplete_path' => 'product_browse/autocomplete',
+    '#suffix' => '<div class="product_browse_box" id="product_browse_series_box"></div>'
+  );
