@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implements hook_menu()
+ */
+function autocomplete_ext_menu(){
+  $items = array();
+  $items['example-autocomplete'] = array(
+    'title' => 'Form Example',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('example_autocomplete_form'),
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+function example_autocomplete_form(){
+echo 'hola';
+}
