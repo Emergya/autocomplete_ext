@@ -1,0 +1,3 @@
+name = Extended Autocomplete
+description = Allow use different behaviors for autocomplete fields
+core = 7.x
