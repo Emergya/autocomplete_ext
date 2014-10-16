@@ -1,0 +1,67 @@
+<?php
+/**
+ * @file
+ * Implementation of extended autocomplete module example.
+ */
+
+/**
+ *  Implements hook_menu().
+ */
+function autocomplete_ext_example_menu() {
+  $items = array();
+
+  // Example page:
+  $items['autocomplete_ext/example'] = array(
+    'title' => 'Autocomplete Extended Example',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('example_autocomplete_example_form'),
+    'access callback' => TRUE,
+  );
+
+  // Autocomplete callback:
+  $items['autocomplete_ext/autocomplete'] = array(
+    'title' => 'Form Example',
+    'page callback' => 'autocomplete_ext_autocomplete',
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+/**
+ * Return the example form for autocomplete_ext/example path.
+ * @param $form
+ * @param $form_state
+ */
+function example_autocomplete_example_form($form, &$form_state) {
+  $form = array();
+
+  $form['container'] = array(
+    '#type' => 'container',
+  );
+
+  $form['container']['fisrt_autocomplete_field'] = array (
+    '#type' => 'textfield',
+    '#title' => t('Add user'),
+    '#maxlength' => 60,
+    '#autocomplete_path' => 'autocomplete_ext/autocomplete',
+    '#attributes' => array('class' => array('first_autocomplete'))
+  );
+
+  $form['container']['add-users'] = array(
+    '#markup' => '<div class="box-added-users"><ul></ul></div>',
+  );
+
+  return $form;
+}
+
+/**
+ * Return the required data by autocomplete to js via json.
+ *
+ * @param $string String with the setted data by the user.
+ */
+function autocomplete_ext_autocomplete($string) {
+  $output = array('option 1', 'option 2');
+
+  drupal_json_output($output);
+}
